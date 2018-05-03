@@ -1,211 +1,249 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Slide Show</title>
-  <style>
-  body{
-​
-  }
-  .slideShow-container{
-   background-color: rgba(255,255,255,0.3);
-   position: absolute;
-      height: 95%;
-      width: 95%;
-      top: 2.5%;
-      left: 2.5%;
-  }
-  .slides-container{
-   position: absolute;
-   height: 95%;
-      width: 100%;
-      top: 0;
-      left: 0;
-​
-  }
-  .btn{
-   background-repeat: no-repeat;
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 6%;
-  }
-  .Option-bar{
-      position: absolute;
-      top: 94%;
-      height: 6%;
-      width: 100%;
-  }
-  .play{
-   left: 75%;
-   background-image: url(https://png.icons8.com/nolan/50/000000/circled-play.png);
-  }
-  .prev{
-   left: 65%;
-   background-image: url(https://png.icons8.com/nolan/50/000000/back.png);
-  }
-  .next{
-   left: 85%;
-   background-image: url(https://png.icons8.com/nolan/50/000000/forward.png);
-  }
-  .thumbnails{
-   left: 23.5%;
-   background-image: url(https://png.icons8.com/nolan/50/000000/stack-of-photos.png);
-  }
-  .counter{
-   border: solid;
-      border-color: green;
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 10%;
-      left: 45%;
-      text-align: center;
-   margin: auto;
-   height: 100%;
-   font-size: 255%;
-  }
-  .imgs{
-   overflow: hidden;
-  }
-  .imgs img{
-   position: absolute;
-   display: block;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-  }
-  .thumbnails-popUp{
-   background-color: rgba(0,0,0,0.5);
-   height: 15%;
-   position: absolute;
-   width: 100%;
-   bottom: 9%;
-   visibility: hidden;
-  }
-  .title{
-   height: 4%;
-   position: absolute;
-   top: 10%;
-   background-color: rgba(255,255,255,69%);
-   text-align: center;
-   padding-top: 2%;
-   width: 100%;
-  }
-  .paragraph{
-   height: 5%;
-   position: absolute;
-   width: 100%;
-   top: 90%;
-   text-align: justify;
-   background-color: rgba(59, 121, 183, 0.42);
-   padding: 9px;
-  }
-​
-  
- </style>
+	<title>Slide Show</title>
+		<style>
+		body{
+
+		}
+		.slideShow-container{
+			background-color: rgba(255,255,255,0.3);
+			position: absolute;
+			height: 95%;
+			width: 100%;
+			top: 10%;
+			left: 0%;
+		}
+		.slides-container{
+			position: absolute;
+			height: 100%;
+    		width: 100%;
+    		top: 0;
+    		left: 0;
+
+		}
+		.btn{
+			background-repeat: no-repeat;
+    		position: absolute;
+    		top: 0;
+    		height: 100%;
+    		width: 4%;
+    		cursor: pointer;
+    		opacity: 0.3;
+		}
+		.Option-bar{
+			background-color: rgba(0,0,0,0.5);
+			position: absolute;
+			top: 94%;
+			height: 6%;
+			width: 100%;
+		}
+		.play{
+			left: 75%;
+			background-image: url(https://png.icons8.com/nolan/50/000000/circled-play.png);
+		}
+		.prev{
+			left: 65%;
+			background-image: url(https://png.icons8.com/nolan/50/000000/back.png);
+		}
+		.next{
+			left: 85%;
+			background-image: url(https://png.icons8.com/nolan/50/000000/forward.png);
+		}
+		.thumbnails{
+			left: 23.5%;
+			background-image: url(https://png.icons8.com/nolan/50/000000/stack-of-photos.png);
+		}
+		.info{
+			left: 10%;
+			background-image: url(https://png.icons8.com/nolan/50/000000/plus-math.png);
+		}
+		.counter{
+    		position: absolute;
+    		top: 0;
+    		height: 100%;
+    		width: 10%;
+    		left: 45%;
+    		text-align: center;
+			margin: auto;
+			height: 100%;
+			font-size: 255%;
+		}
+		.imgs{
+			position: absolute;
+			height: 100%;
+			overflow: hidden;
+			visibility: hidden;
+			width: 100%
+		}
+		.imgs img{
+			position: absolute;
+			display: block;
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		height: 100%;
+    		margin: auto;
+		}
+		.thumbnails-popUp{
+			display: table;
+			background-color: rgba(0,0,0,0.5);
+			height: 15%;
+			position: absolute;
+			width: 100%;
+			bottom: 6%;
+			visibility: hidden;
+		}
+		.title{
+		    height: 6%;
+		    position: absolute;
+		    top: 0%;
+		    background-color: rgba(255,255,255,69%);
+		    text-align: center;
+		    /* padding-top: 0%; */
+		    width: 100%;
+		    /* left: 50%; */
+		    /* transform: translate(-50%,0); */
+		}
+		.paragraph{
+		    height: 20%;
+		    position: relative;
+		    width: 47%;
+		    left: 1%;
+		    top: 71%;
+		    text-align: justify;
+		    background-color: rgba(100%, 100%, 100%, 42%);
+		    padding: 10px;
+		    display: none;
+		    /* transform: translate(-50%,0%); */
+		    /* margin: auto; */
+		    /* bottom: 1%; */
+		}
+		.thumbnails-imgs{
+			float: left;
+			width: 20%;
+		}
+		.thumbnails-imgs img{
+			width: 100%;
+			height:	189px;
+			opacity: 0.6;
+			cursor: pointer;
+		}
+
+		
+	</style>
 </head>
 <body>
- <h2>SlideShow</h2>
- <p>This Slide Show have the purpose of practicing my skill using HTML, CSS, and JavaScript. </p>
- <div class="slideShow-container">
-  <div class="slides-container imgs">
-   <div>
-    <img src="https://images.unsplash.com/photo-1523977843538-0650e8cb2e7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a43d0d3984b7a6e57716c15ee6fe5797&auto=format&fit=crop&w=1050&q=80">
-    <div class="title">
-     A stormy sky and ocean
-    </div>
-    <div class="paragraph">
-     Fort Ebey State Park is a 649-acre camping park on Whidbey Island.
-    </div>
-    <div style="visibility: hidden;">Fort Ebey State Park, Coupeville, United States by Patrick Fore.</div>
-   </div>
-   <div>
-    <img src="https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80">
-    <div class="title">
-     Dachstein Mountains
-    </div>
-    <div class="paragraph">
-     The Dachstein Mountains are a mountain range in the Northern Limestone Alps. The term is used by the Austrian Alpine Club in its classification of the Eastern Alps as one of the 24 sub-ranges of the Northern Limestone Alps.
-    </div>
-    <div style="visibility: hidden;">Dachstein Mountains, Obertraun, Austria by Kaidi Guo</div>
-   </div>
-   <div>
-    <img style="height: 80%" src="https://images.unsplash.com/photo-1516524609276-3cb95aa22190?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d79a0b6dc9683effb116d7e9763bfa2&auto=format&fit=crop&w=1225&q=80">
-    <div class="title">
-     
-    </div>
-    <div class="paragraph">
-     
-    </div>
-    <div style="visibility: hidden;">Tõrva, Estonia by Jaak Horn</div>
-   </div>
-   <div>
-    <img src="https://images.unsplash.com/photo-1517483141275-296bb15890b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6fb898eac03ab9abd1137fa691ebe82&auto=format&fit=crop&w=1051&q=80">
-    <div class="title">
-     Lutry, Switzerland
-    </div>
-    <div class="paragraph">
-     Lutry is a municipality in the Swiss canton of Vaud, located in the Lavaux-Oron.
-    </div>
-    <div style="visibility: hidden">Lutry, Switzerland by Olivier Fahrni</div>
-   </div>
-   <div>
-    <img src="https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80">
-    <div class="title">
-     Mirror Lake Trail - Tosemite National Park
-    </div>
-    <div class="paragraph">
-     From the shuttle stop (#17), a paved trail leads directly to Mirror Lake. Which is in the Adirondack Mountains in northern New York in the United States. The lake is approximately 124 acres, with a watershed area of 741 acres.
-    </div>
-    <div style="visibility: hidden;">Mirror Lake, Yosemite Valley, United States by Quentin Dr
-    </div>
-​
-   </div>
-  </div>
-  <div class="thumbnails-popUp"></div>
-  <div class="Option-bar">
-   <div class="thumbnails btn"></div>
-   <div class="counter">0/0</div>
-   <div class="btn prev"></div>
-   <div class="btn play"></div>
-   <div class="btn next"></div>
-  </div>  
- </div>
+	<h2>SlideShow</h2>
+	<p>This Slide Show have the purpose of practicing my skill using HTML, CSS, and JavaScript. </p>
+	<div class="slideShow-container">
+		<div class="slides-container">
+			<div class="imgs">
+				<img src="https://images.unsplash.com/photo-1523977843538-0650e8cb2e7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a43d0d3984b7a6e57716c15ee6fe5797&auto=format&fit=crop&w=1050&q=80">
+				<div class="title">
+					<h3>A stormy sky and ocean</h3>
+				</div>
+				<div class="paragraph">
+					<p>Fort Ebey State Park is a 649-acre camping park on Whidbey Island.</p>
+				</div>
+				<div style="visibility: hidden;">Fort Ebey State Park, Coupeville, United States by Patrick Fore.</div>
+			</div>
+			<div class="imgs">
+				<img src="https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80">
+				<div class="title">
+					<h3>Dachstein Mountains</h3>
+				</div>
+				<div class="paragraph">
+					<p>The Dachstein Mountains are a mountain range in the Northern Limestone Alps. The term is used by the Austrian Alpine Club in its classification of the Eastern Alps as one of the 24 sub-ranges of the Northern Limestone Alps.</p>
+				</div>
+				<div style="visibility: hidden;">Dachstein Mountains, Obertraun, Austria by Kaidi Guo</div>
+			</div>
+			<div class="imgs">
+				<img style="height: 80%" src="https://images.unsplash.com/photo-1516524609276-3cb95aa22190?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d79a0b6dc9683effb116d7e9763bfa2&auto=format&fit=crop&w=1225&q=80">
+				<div class="title">
+					<h3></h3>
+				</div>
+				<div class="paragraph">
+					<p></p>
+				</div>
+				<div style="visibility: hidden;">Tõrva, Estonia by Jaak Horn</div>
+			</div>
+			<div class="imgs">
+				<img src="https://images.unsplash.com/photo-1517483141275-296bb15890b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6fb898eac03ab9abd1137fa691ebe82&auto=format&fit=crop&w=1051&q=80">
+				<div class="title">
+					<h3>Lutry, Switzerland</h3>
+				</div>
+				<div class="paragraph">
+					<p>Lutry is a municipality in the Swiss canton of Vaud, located in the Lavaux-Oron.</p>
+				</div>
+				<div style="visibility: hidden">Lutry, Switzerland by Olivier Fahrni</div>
+			</div>
+			<div class="imgs">
+				<img src="https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80">
+				<div class="title">
+					<h3>Mirror Lake Trail - Tosemite National Park</h3>
+				</div>
+				<div class="paragraph">
+					<p>From the shuttle stop (#17), a paved trail leads directly to Mirror Lake. Which is in the Adirondack Mountains in northern New York in the United States. The lake is approximately 124 acres, with a watershed area of 741 acres.</p>
+				</div>
+				<div style="visibility: hidden;">Mirror Lake, Yosemite Valley, United States by Quentin Dr
+				</div>
+
+			</div>
+		</div>
+		<div class="thumbnails-popUp">
+			<div class="thumbnails-imgs"><img src="https://images.unsplash.com/photo-1523977843538-0650e8cb2e7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a43d0d3984b7a6e57716c15ee6fe5797&auto=format&fit=crop&w=1050&q=80"></div>
+			<div class="thumbnails-imgs"><img src="https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80"></div>
+			<div class="thumbnails-imgs"><img src="https://images.unsplash.com/photo-1516524609276-3cb95aa22190?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d79a0b6dc9683effb116d7e9763bfa2&auto=format&fit=crop&w=1225&q=80"></div>
+			<div class="thumbnails-imgs"><img src="https://images.unsplash.com/photo-1517483141275-296bb15890b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6fb898eac03ab9abd1137fa691ebe82&auto=format&fit=crop&w=1051&q=80"></div>
+			<div class="thumbnails-imgs"><img src="https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80"></div>
+		</div>
+		<div class="Option-bar">
+			<div class="btn info"></div>
+			<div class="thumbnails btn"></div>
+			<div class="counter">0/0</div>
+			<div class="btn prev"></div>
+			<div class="btn play"></div>
+			<div class="btn next"></div>
+		</div>		
+	</div>
 <script>
- const imgs = document.querySelectorAll('img');
- const container = document.querySelector('slideShow-container');
-​
-​
-​
-​
- /*
- https://images.unsplash.com/photo-1491974162517-a7541284efe7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e0c4664b504f632d31f49fb757f9335f&auto=format&fit=crop&w=1055&q=80
-​
- https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80
-​
- https://images.unsplash.com/photo-1491403865995-cda9c458c314?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d475dda59fd26edbc98478461c42df01&auto=format&fit=crop&w=1209&q=80
-​
- https://images.unsplash.com/photo-1471189897538-fac9c5b5b55e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1927e3d8c983f73af9f67a87f53d3149&auto=format&fit=crop&w=1130&q=80
-​
- https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80
- 
-​
- Play
- https://png.icons8.com/nolan/1600/play.png
- https://png.icons8.com/nolan/1600/chevron-right.png
- https://png.icons8.com/nolan/1600/chevron-left.png
- https://png.icons8.com/nolan/50/000000/back.png
- https://png.icons8.com/nolan/50/000000/forward.png
- https://icons8.com/icon/64778/lock
- https://icons8.com/icon/65385/unlock
- https://png.icons8.com/nolan/50/000000/innovation.png
- https://png.icons8.com/nolan/50/000000/circled-play.png
- https://png.icons8.com/nolan/50/000000/circled-pause.png
- https://png.icons8.com/nolan/50/000000/stack-of-photos.png
-​
- */
+	const imgs = document.querySelectorAll('img');
+	const container = document.querySelector('slideShow-container');
+
+
+
+
+	/*
+	https://images.unsplash.com/photo-1491974162517-a7541284efe7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e0c4664b504f632d31f49fb757f9335f&auto=format&fit=crop&w=1055&q=80
+
+	https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80
+
+	https://images.unsplash.com/photo-1491403865995-cda9c458c314?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d475dda59fd26edbc98478461c42df01&auto=format&fit=crop&w=1209&q=80
+
+	https://images.unsplash.com/photo-1471189897538-fac9c5b5b55e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1927e3d8c983f73af9f67a87f53d3149&auto=format&fit=crop&w=1130&q=80
+
+	https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80
+	
+
+	Play
+	https://png.icons8.com/nolan/1600/play.png
+	https://png.icons8.com/nolan/1600/chevron-right.png
+	https://png.icons8.com/nolan/1600/chevron-left.png
+	https://png.icons8.com/nolan/50/000000/back.png
+	https://png.icons8.com/nolan/50/000000/forward.png
+	https://icons8.com/icon/64778/lock
+	https://icons8.com/icon/65385/unlock
+	https://png.icons8.com/nolan/50/000000/innovation.png
+	https://png.icons8.com/nolan/50/000000/circled-play.png
+	https://png.icons8.com/nolan/50/000000/circled-pause.png
+	https://png.icons8.com/nolan/50/000000/stack-of-photos.png
+	https://png.icons8.com/nolan/50/000000/plus-math.png
+	https://png.icons8.com/nolan/50/000000/minus-math.png
+	https://png.icons8.com/nolan/50/000000/minus.png
+
+	*/
 </script>
 </body>
 </html>
