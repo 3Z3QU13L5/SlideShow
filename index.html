@@ -144,7 +144,7 @@
 
 		imgs[idx-1].style.display = "block";
 		thumbnailImgs[idx-1].classList.add("actual");
-		counter.textContent = `${idx}/${imgs.length}`;
+		counter.textContent = String(idx)+"/"+String(imgs.length);
 	}
 
 	function showThumbnails() {
