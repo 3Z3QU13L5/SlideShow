@@ -1,0 +1,127 @@
+.slideShow-container, .reference, .slides-container, .btn, .Option-bar, .counter, .imgs, .imgs>img, .thumbnails-popUp, .title{
+	position: absolute;
+}
+
+.slideShow-container{
+	background-color: rgba(255,255,255,0.3);
+	height: 100%;
+	left: 0%;
+	top: 10%;
+	width: 100%;	
+}
+.slides-container{
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+.btn{
+	background-repeat: no-repeat;
+	cursor: pointer;
+	height: 100%;
+	top: 0;
+	opacity: 0.3;
+	width: 4%;
+}
+.Option-bar{
+	background-color: rgba(0,0,0,0.5);
+	height: 6%;
+	top: 94%;
+	width: 100%;
+}
+.play{
+	background-image: url(https://png.icons8.com/nolan/50/000000/circled-play.png);
+	left: 75%;
+}
+.pause{
+	background-image: url(https://png.icons8.com/nolan/50/000000/circled-pause.png);
+	left: 75%;
+}
+.prev{
+	background-image: url(https://png.icons8.com/nolan/50/000000/back.png);
+	left: 65%;
+}
+.next{
+	background-image: url(https://png.icons8.com/nolan/50/000000/forward.png);
+	left: 85%;
+}
+.thumbnails{
+	background-image: url(https://png.icons8.com/nolan/50/000000/stack-of-photos.png);
+	left: 23.5%;
+}
+.info{
+	background-image: url(https://png.icons8.com/nolan/50/000000/plus-math.png);
+	left: 10%;
+}
+.counter{
+	color: white;
+	font-size: 255%;
+	height: 100%;
+	left: 45%;
+	margin: auto;
+	text-align: center;
+	top: 0;
+	width: 10%;
+}
+.imgs{
+	height: 100%;
+	overflow: hidden;
+	width: 100%
+}
+.imgs>img{
+	bottom: 0;
+	display: block;
+	height: 100%;
+	left: 0;
+	margin: auto;
+	top: 0;
+	right: 0;
+}
+.thumbnails-popUp{
+	background-color: rgba(0,0,0,0.5);
+	bottom: 6%;
+	display: table;
+	display: none;
+	height: 15%;
+	width: 100%;
+}
+.title{
+	background-color: rgba(255,255,255,0.69);
+	height: 8%;
+	text-align: center;
+	top: 0%;
+	width: 100%;
+}
+.paragraph{
+	background-color: rgba(255,255,255,0.42);
+	display: none;
+	height: 20%;
+	left: 1%;
+	padding: 10px;
+	position: relative;
+	top: 71%;
+	text-align: justify;
+	width: 47%;
+}
+.thumbnails-imgs{
+	float: left;
+	width: 20%;
+}
+.thumbnails-imgs>img{
+	cursor: pointer;
+	height:	189px;
+	opacity: 0.6;
+	width: 100%;
+}
+
+.actual>img, img:hover, .btn:hover{
+	opacity: 1;
+}
+.reference{
+	color: white;
+	background-color: rgba(0,0,255,0.35);
+	display: none;
+	height: auto;
+	left: 35%;
+	top: 8%;
+}
