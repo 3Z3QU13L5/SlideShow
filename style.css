@@ -1,4 +1,4 @@
-.slideShow-container, .reference, .slides-container, .btn, .Option-bar, .counter, .imgs, .imgs>img, .thumbnails-popUp, .title{
+.slideShow-container, .reference, .slides-container, .btn, .option-bar, .counter, .imgs, .imgs>img, .thumbnails-popUp, .title{
 	position: absolute;
 }
 
@@ -25,7 +25,7 @@
 	width: 3%;
 	align-items: center;
 }
-.Option-bar{
+.option-bar{
 	background-color: rgba(0,0,0,0.5);
 	height: 6%;
 	top: 94%;
@@ -65,7 +65,7 @@
 	top: 0;
 	width: 10%;
 }
-.Intro{
+.intro{
 	padding: 10px;
 }
 .slide{
