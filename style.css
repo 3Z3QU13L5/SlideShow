@@ -1,4 +1,13 @@
-.slideShow-container, .reference, .slides-container, .btn, .option-bar, .counter, .imgs, .imgs>img, .thumbnails-popUp, .title{
+.btn,
+.counter,
+.option-bar,
+.reference,
+.imgs, 
+.imgs>img,  
+.slideShow-container, 
+.slides-container,
+.thumbnails-popUp, 
+.title{
 	position: absolute;
 }
 
