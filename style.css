@@ -6,7 +6,7 @@
 	background-color: rgba(255,255,255,0.3);
 	height: 100%;
 	left: 0%;
-	top: 10%;
+	top: 12%;
 	width: 100%;	
 }
 .slides-container{
@@ -63,17 +63,19 @@
 	top: 0;
 	width: 10%;
 }
-.imgs{
+.Intro{
+	padding: 10px;
+}
+.slide{
 	height: 100%;
 	overflow: hidden;
 	width: 100%
 }
-.imgs>img{
+.slide>img{
 	bottom: 0;
 	display: block;
-	height: 100%;
+	width: 100%;
 	left: 0;
-	margin: auto;
 	top: 0;
 	right: 0;
 }
@@ -87,7 +89,6 @@
 }
 .title{
 	background-color: rgba(255,255,255,0.69);
-	height: 8%;
 	text-align: center;
 	top: 0%;
 	width: 100%;
@@ -98,7 +99,7 @@
 	height: 20%;
 	left: 1%;
 	padding: 10px;
-	position: relative;
+	position: absolute;
 	top: 71%;
 	text-align: justify;
 	width: 47%;

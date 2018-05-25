@@ -7,11 +7,11 @@
 <body>
 	<div>
 		<h1>SlideShow</h1>
-		<p>This Slide Show have the purpose of practicing my skill using HTML, CSS, and JavaScript. </p>
+		<p class="Intro">This Slide Show have the purpose of practicing my skill using HTML, CSS, and JavaScript. </p>
 	</div>
 	<div class="slideShow-container">
 		<div class="slides-container">
-			<div class="imgs">
+			<div class="slide">
 				<img src="https://images.unsplash.com/photo-1523977843538-0650e8cb2e7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a43d0d3984b7a6e57716c15ee6fe5797&auto=format&fit=crop&w=1050&q=80" alt="Fort Ebey State Park, Coupeville, United States by Patrick Fore.">
 				<div class="title" onclick="showReference()">
 					<h3>A stormy sky and ocean</h3>
@@ -21,7 +21,7 @@
 				</div>
 				<div class="reference">Fort Ebey State Park, Coupeville, United States by Patrick Fore.</div>
 			</div>
-			<div class="imgs">
+			<div class="slide">
 				<img src="https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80" alt="Dachstein Mountains, Obertraun, Austria by Kaidi Guo">
 				<div class="title" onclick="showReference()">
 					<h3>Dachstein Mountains</h3>
@@ -31,7 +31,7 @@
 				</div>
 				<div class="reference">Dachstein Mountains, Obertraun, Austria by Kaidi Guo</div>
 			</div>
-			<div class="imgs">
+			<div class="slide">
 				<img src="https://images.unsplash.com/photo-1516524609276-3cb95aa22190?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d79a0b6dc9683effb116d7e9763bfa2&auto=format&fit=crop&w=1225&q=80" alt="Tõrva, Estonia by Jaak Horn">
 				<div class="title" onclick="showReference()">
 					<h3></h3>
@@ -41,7 +41,7 @@
 				</div>
 				<div class="reference">Tõrva, Estonia by Jaak Horn</div>
 			</div>
-			<div class="imgs">
+			<div class="slide">
 				<img src="https://images.unsplash.com/photo-1517483141275-296bb15890b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6fb898eac03ab9abd1137fa691ebe82&auto=format&fit=crop&w=1051&q=80" alt="Lutry, Switzerland by Olivier Fahrni">
 				<div class="title" onclick="showReference()">
 					<h3>Lutry, Switzerland</h3>
@@ -51,7 +51,7 @@
 				</div>
 				<div class="reference">Lutry, Switzerland by Olivier Fahrni</div>
 			</div>
-			<div class="imgs">
+			<div class="slide">
 				<img src="https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80" alt="Mirror Lake, Yosemite Valley, United States by Quentin Dr">
 				<div class="title" onclick="showReference()">
 					<h3>Mirror Lake Trail - Tosemite National Park</h3>
@@ -81,7 +81,7 @@
 <script>
 
 	//Elements
-	const imgs = document.querySelectorAll('.imgs');
+	const slide = document.querySelectorAll('.slide');
 	const container = document.querySelector('.slideShow-container');
 	const thumbnailImgs = document.querySelectorAll('.thumbnails-imgs');
 	const counter = document.querySelector('.counter');
@@ -113,8 +113,8 @@
 
 	//Check Funtions
 	function checkIdx(n) {
-		if(n > imgs.length) {idx = 1};
-		if(n < 1){idx = imgs.length};
+		if(n > slide.length) {idx = 1};
+		if(n < 1){idx = slide.length};
 	}
 
 	//Change Function
@@ -125,11 +125,11 @@
 	//Hidden Function
 	function hiddeSlides(m) {
 		if(firstTime){
-			imgs.forEach(img=>img.style.display = "none");
+			slide.forEach(img=>img.style.display = "none");
 			thumbnailImgs.forEach(tImg=>tImg.classList.remove("actual"));
 			firstTime = false;
 		}else{
-			imgs[m-1].style.display = "none";
+			slide[m-1].style.display = "none";
 			thumbnailImgs[m-1].classList.remove("actual");
 		}
 
@@ -142,9 +142,9 @@
 
 		hiddeSlides(m);
 
-		imgs[idx-1].style.display = "block";
+		slide[idx-1].style.display = "block";
 		thumbnailImgs[idx-1].classList.add("actual");
-		counter.textContent = String(idx)+"/"+String(imgs.length);
+		counter.textContent = String(idx)+"/"+String(slide.length);
 	}
 
 	function showThumbnails() {
