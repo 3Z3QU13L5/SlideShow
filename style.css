@@ -17,11 +17,13 @@
 }
 .btn{
 	background-repeat: no-repeat;
+	background-color: rgba(0,0,0,0.5);
 	cursor: pointer;
 	height: 100%;
 	top: 0;
 	opacity: 0.3;
-	width: 4%;
+	width: 3%;
+	align-items: center;
 }
 .Option-bar{
 	background-color: rgba(0,0,0,0.5);

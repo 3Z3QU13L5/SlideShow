@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Slide Show</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -70,12 +70,12 @@
 			<div class="thumbnails-imgs actual" onclick="showSlide(idx,idx=5)"><img src="https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80"></div>
 		</div>
 		<div class="Option-bar">
-			<div class="btn info" onclick="showInfo()"></div>
-			<div class="thumbnails btn" onclick="showThumbnails()"></div>
+			<button class="btn info" onclick="showInfo()"></button>
+			<button class="thumbnails btn" onclick="showThumbnails()"></button>
 			<div class="counter">0/0</div>
-			<div class="btn prev" onclick="prevSlide()"></div>
-			<div id="playBtn" class="btn play" onclick="changePlay()"></div>
-			<div class="btn next" onclick="nextSlide()"></div>
+			<button class="btn prev" onclick="prevSlide()"></button>
+			<button id="playBtn" class="btn play" onclick="changePlay()"></button>
+			<button class="btn next" onclick="nextSlide()"></button>
 		</div>
 	</div>
 <script>
@@ -146,7 +146,7 @@
 
 		slide[idx-1].style.display = "block";
 		thumbnailImgs[idx-1].classList.add("actual");
-		counter.textContent = String(idx)+"/"+String(slide.length);
+		counter.textContent = idx+"/"+(slide.length);
 	}
 
 	function showThumbnails() {
