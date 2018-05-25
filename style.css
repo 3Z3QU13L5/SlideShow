@@ -1,3 +1,8 @@
+:root{
+	--black_T_50: rgba(0,0,0,0.5);
+}
+
+
 .btn,
 .counter,
 .option-bar,
@@ -26,7 +31,7 @@
 }
 .btn{
 	background-repeat: no-repeat;
-	background-color: rgba(0,0,0,0.5);
+	background-color: var(--black_T_50);
 	cursor: pointer;
 	height: 100%;
 	top: 0;
@@ -35,7 +40,7 @@
 	align-items: center;
 }
 .option-bar{
-	background-color: rgba(0,0,0,0.5);
+	background-color: var(--black_T_50);
 	height: 6%;
 	top: 94%;
 	width: 100%;
@@ -65,7 +70,7 @@
 	left: 10%;
 }
 .counter{
-	color: white;
+	color: rgba(255,255,255,1);
 	font-size: 255%;
 	height: 100%;
 	left: 45%;
@@ -91,7 +96,7 @@
 	right: 0;
 }
 .thumbnails-popUp{
-	background-color: rgba(0,0,0,0.5);
+	background-color: var(--black_T_50);
 	bottom: 6%;
 	display: table;
 	display: none;
@@ -126,11 +131,13 @@
 	width: 100%;
 }
 
-.actual>img, img:hover, .btn:hover{
+.actual>img, 
+.btn:hover,
+img:hover{
 	opacity: 1;
 }
 .reference{
-	color: white;
+	color: rgba(255,255,255,1);;
 	background-color: rgba(0,0,255,0.35);
 	display: none;
 	height: auto;
