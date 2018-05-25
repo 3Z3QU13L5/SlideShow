@@ -74,7 +74,7 @@
 			<div class="thumbnails btn" onclick="showThumbnails()"></div>
 			<div class="counter">0/0</div>
 			<div class="btn prev" onclick="prevSlide()"></div>
-			<div id="playBtn" class="btn play" onclick="changePlay()"; playSlides()"></div>
+			<div id="playBtn" class="btn play" onclick="changePlay()"></div>
 			<div class="btn next" onclick="nextSlide()"></div>
 		</div>
 	</div>
@@ -82,14 +82,12 @@
 
 	//Elements
 	const slide = document.querySelectorAll('.slide');
-	const container = document.querySelector('.slideShow-container');
 	const thumbnailImgs = document.querySelectorAll('.thumbnails-imgs');
 	const counter = document.querySelector('.counter');
 	const popUp = document.querySelector('.thumbnails-popUp');
 	const infoBoxes = document.querySelectorAll('.paragraph');
 	const btnPlay = document.querySelector('#playBtn');
 	const refereces = document.querySelectorAll('.reference');
-	const titlesH3 = document.querySelectorAll('h3');
 	const SlideTimeout = 2000;
 
 	var intervalSlides;
@@ -121,7 +119,10 @@
 	function changeThumbnails() {	up = !up;}
 	function changeInfo() {infoUp = !infoUp;}
 	function changeReference() {refUp = !refUp;}
-	function changePlay() { play=!play;}
+	function changePlay() { 
+		play=!play;
+		playSlides();
+	}
 
 	//Hidden Function
 	function hiddeSlides(m) {
