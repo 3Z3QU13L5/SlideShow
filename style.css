@@ -8,7 +8,7 @@
 .option-bar,
 .reference,
 .imgs, 
-.imgs>img,  
+.slide>img,  
 .slideShow-container, 
 .slides-container,
 .thumbnails-popUp, 
@@ -90,10 +90,8 @@
 .slide>img{
 	bottom: 0;
 	display: block;
+	height: 100%;
 	width: 100%;
-	left: 0;
-	top: 0;
-	right: 0;
 }
 .thumbnails-popUp{
 	background-color: var(--black_T_50);
