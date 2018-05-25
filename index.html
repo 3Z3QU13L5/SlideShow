@@ -102,21 +102,21 @@
 
 	//Function
 	function nextSlide() {
-		showSlide(idx,idx += 1);
+		showSlide(idx,++idx );
 	}
 
 	function prevSlide() {
-		showSlide(idx,idx -= 1);
+		showSlide(idx,--idx);
 	}
 
 	//Check Funtions
-	function checkIdx(n) {
-		if(n > slide.length) {idx = 1};
-		if(n < 1){idx = slide.length};
+	function checkIdx(actualSlide) {
+		if(actualSlide > slide.length) {idx = 1};
+		if(actualSlide < 1){idx = slide.length};
 	}
 
 	//Change Function
-	function changeThumbnails() {	up = !up;}
+	function changeUp() {	up = !up;}
 	function changeInfo() {infoUp = !infoUp;}
 	function changeReference() {refUp = !refUp;}
 	function changePlay() { 
@@ -125,24 +125,24 @@
 	}
 
 	//Hidden Function
-	function hiddeSlides(m) {
+	function hiddeSlides(prevSlide) {
 		if(firstTime){
 			slide.forEach(img=>img.style.display = "none");
 			thumbnailImgs.forEach(tImg=>tImg.classList.remove("actual"));
 			firstTime = false;
 		}else{
-			slide[m-1].style.display = "none";
-			thumbnailImgs[m-1].classList.remove("actual");
+			slide[prevSlide-1].style.display = "none";
+			thumbnailImgs[prevSlide-1].classList.remove("actual");
 		}
 
 	}
 
 	//Show Funtions
-	function showSlide(m,n) {
+	function showSlide(prevSlide,actualSlide) {
 
-		checkIdx(n);
+		checkIdx(actualSlide);
 
-		hiddeSlides(m);
+		hiddeSlides(prevSlide);
 
 		slide[idx-1].style.display = "block";
 		thumbnailImgs[idx-1].classList.add("actual");
@@ -150,7 +150,7 @@
 	}
 
 	function showThumbnails() {
-		changeThumbnails();
+		changeUp();
 		popUp.style.display = up ? 'block' : 'none';
 	}
 	function showInfo() {
