@@ -74,7 +74,7 @@
 			<div class="thumbnails btn" onclick="showThumbnails()"></div>
 			<div class="counter">0/0</div>
 			<div class="btn prev" onclick="prevSlide()"></div>
-			<div id="playBtn" class="btn play" onclick="play=!play; playSlides()"></div>
+			<div id="playBtn" class="btn play" onclick="changePlay()"; playSlides()"></div>
 			<div class="btn next" onclick="nextSlide()"></div>
 		</div>
 	</div>
@@ -121,6 +121,7 @@
 	function changeThumbnails() {	up = !up;}
 	function changeInfo() {infoUp = !infoUp;}
 	function changeReference() {refUp = !refUp;}
+	function changePlay() { play=!play;}
 
 	//Hidden Function
 	function hiddeSlides(m) {
