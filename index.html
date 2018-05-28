@@ -108,7 +108,7 @@
 	}
 
 	// Check Funtions
-	function checkIdx(actualSlide) {
+	function correctIdx(actualSlide) {
 		if (actualSlide > slide.length) {idx = 1};
 		if (actualSlide < 1){idx = slide.length};
 	}
@@ -139,7 +139,7 @@
 	// Show Funtions
 	function showSlide(prevSlide, actualSlide) {
 
-		checkIdx(actualSlide);
+		correctIdx(actualSlide);
 
 		hiddeSlides(prevSlide);
 
