@@ -88,8 +88,8 @@
 	const infoBoxes = document.querySelectorAll('.paragraph');
 	const btnPlay = document.querySelector('#playBtn');
 	const refereces = document.querySelectorAll('.reference');
+	
 	const SlideTimeout = 2000;
-
 	var intervalSlides;
 	var idx = 1;
 	var up = false;
@@ -98,55 +98,54 @@
 	var play = false;
 	var firstTime = true;
 
-	playSlides();
-
-	//Function
+	// Function
 	function nextSlide() {
-		showSlide(idx,++idx );
+		showSlide (idx, ++idx );
 	}
 
 	function prevSlide() {
-		showSlide(idx,--idx);
+		showSlide (idx, --idx);
 	}
 
-	//Check Funtions
+	// Check Funtions
 	function checkIdx(actualSlide) {
-		if(actualSlide > slide.length) {idx = 1};
-		if(actualSlide < 1){idx = slide.length};
+		if (actualSlide > slide.length) {idx = 1};
+		if (actualSlide < 1){idx = slide.length};
 	}
 
-	//Change Function
-	function changeUp() {	up = !up;}
+	// Change Function
+	function changeUp() {up = !up;}
 	function changeInfo() {infoUp = !infoUp;}
 	function changeReference() {refUp = !refUp;}
 	function changePlay() { 
-		play=!play;
+		play =! play;
 		playSlides();
 	}
 
-	//Hidden Function
+	// Hidden Function
 	function hiddeSlides(prevSlide) {
-		if(firstTime){
-			slide.forEach(img=>img.style.display = "none");
-			thumbnailImgs.forEach(tImg=>tImg.classList.remove("actual"));
+		if (firstTime){
+			slide.forEach(img => img.style.display = 'none');
+			thumbnailImgs.forEach(tImg => tImg.classList.remove('actual'));
 			firstTime = false;
-		}else{
-			slide[prevSlide-1].style.display = "none";
-			thumbnailImgs[prevSlide-1].classList.remove("actual");
+		}
+		else {
+			slide[prevSlide - 1].style.display = 'none';
+			thumbnailImgs[prevSlide - 1].classList.remove('actual');
 		}
 
 	}
 
-	//Show Funtions
-	function showSlide(prevSlide,actualSlide) {
+	// Show Funtions
+	function showSlide(prevSlide, actualSlide) {
 
 		checkIdx(actualSlide);
 
 		hiddeSlides(prevSlide);
 
-		slide[idx-1].style.display = "block";
-		thumbnailImgs[idx-1].classList.add("actual");
-		counter.textContent = idx+"/"+(slide.length);
+		slide[idx - 1].style.display = 'block';
+		thumbnailImgs[idx - 1].classList.add('actual');
+		counter.textContent = idx + "/" + (slide.length);
 	}
 
 	function showThumbnails() {
@@ -163,17 +162,21 @@
 		refereces.forEach(ref => ref.style.display = refUp ? 'block' : 'none');
 	}
 
-	//Play Funtions
+	// Play Funtions
 	function playSlides() {
-		if(play){
-			btnPlay.classList.replace("play", "pause");
-			showSlide(idx,idx+=1);
+		if (play){
+			btnPlay.classList.replace('play', 'pause');
+			showSlide(idx, idx += 1);
 			intervalSlides = setTimeout(playSlides, SlideTimeout);
-		}else{
-			btnPlay.classList.replace("pause","play");
-			showSlide(idx-1,idx);
+		}
+		else {
+			btnPlay.classList.replace('pause','play');
+			showSlide(idx - 1, idx);
 			clearTimeout(intervalSlides);
 		}
+
+	playSlides();
+
 	}
 </script>
 </body>
