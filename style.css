@@ -11,7 +11,7 @@
 .imgs,
 .slide__paragraph, 
 .slideshow,
-.thumbnails, 
+.slide__thumbnails, 
 .slide__title{
 	position: absolute;
 }
@@ -22,7 +22,7 @@
 	left: 0%;
 	width: 100%;	
 }
-.slidesContainer{
+.slides-container{
 	height: 100%;
 	left: 0;
 	position: relative;
@@ -97,7 +97,7 @@
 	position: initial;
 	width: 100%;
 }
-.thumbnails{
+.slide__thumbnails{
 	background-color: var(--black_T_50);
 	bottom: 6%;
 	display: table;
