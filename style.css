@@ -1,34 +1,35 @@
 :root{
 	--black_T_50: rgba(0,0,0,0.5);
+	--white_100: rgba(255,255,255,1);
 }
 
 
-.btn,
+.button,
 .counter,
-.option-bar,
-.reference,
+.optionBar,
+.slide__reference,
 .imgs,
-.paragraph, 
-.slideshow-container,
-.thumbnails-popUp, 
-.title{
+.slide__paragraph, 
+.slideshow,
+.thumbnails, 
+.slide__title{
 	position: absolute;
 }
 
-.slideshow-container{
+.slideshow{
 	background-color: rgba(255,255,255,0.3);
 	height: 100%;
 	left: 0%;
 	width: 100%;	
 }
-.slides-container{
+.slidesContainer{
 	height: 100%;
 	left: 0;
 	position: relative;
 	top: 0;
 	width: 100%;
 }
-.btn{
+.button{
 	background-color: var(--black_T_50);
 	background-position: center;
 	background-repeat: no-repeat;
@@ -39,38 +40,40 @@
 	top: 0;
 	width: 4%;
 }
-.option-bar{
+.optionBar{
 	background-color: var(--black_T_50);
 	height: 6%;
 	top: 94%;
 	width: 100%;
 }
-.play{
+#playBtn{
+	left: 75%;
+}
+
+.button--play{
 	background-image: url(https://png.icons8.com/nolan/50/000000/circled-play.png);
-	left: 75%;
 }
-.pause{
+.button--pause{
 	background-image: url(https://png.icons8.com/nolan/50/000000/circled-pause.png);
-	left: 75%;
 }
-.prev{
+.button__prev{
 	background-image: url(https://png.icons8.com/nolan/50/000000/back.png);
 	left: 65%;
 }
-.next{
+.button__next{
 	background-image: url(https://png.icons8.com/nolan/50/000000/forward.png);
 	left: 85%;
 }
-.thumbnails{
+.button__thumbnails{
 	background-image: url(https://png.icons8.com/nolan/50/000000/stack-of-photos.png);
 	left: 23.5%;
 }
-.info{
+.button__info{
 	background-image: url(https://png.icons8.com/nolan/50/000000/plus-math.png);
 	left: 10%;
 }
 .counter{
-	color: rgba(255,255,255,1);
+	color: var(--white_100);
 	font-size: 255%;
 	height: 100%;
 	left: 45%;
@@ -94,7 +97,7 @@
 	position: initial;
 	width: 100%;
 }
-.thumbnails-popUp{
+.thumbnails{
 	background-color: var(--black_T_50);
 	bottom: 6%;
 	display: table;
@@ -102,13 +105,13 @@
 	height: 20%;
 	width: 100%;
 }
-.title{
+.slide__title{
 	background-color: rgba(255,255,255,0.69);
 	text-align: center;
 	top: 0%;
 	width: 100%;
 }
-.paragraph{
+.slide__paragraph{
 	background-color: rgba(255,255,255,0.42);
 	display: none;
 	height: 20%;
@@ -118,24 +121,24 @@
 	text-align: justify;
 	width: 47%;
 }
-.thumbnails-imgs{
+.thumbnails__imgs{
 	float: left;
 	width: 20%;
 }
-.thumbnails-imgs>img{
+.thumbnails__imgs>img{
 	cursor: pointer;
 	height:	189px;
 	opacity: 0.6;
 	width: 100%;
 }
 
-.actual>img, 
-.btn:hover,
-.thumbnails-imgs>img:hover{
+.thumbnails__imgs--actual>img, 
+.button:hover,
+.thumbnails__imgs>img:hover{
 	opacity: 1;
 }
-.reference{
-	color: rgba(255,255,255,1);;
+.slide__reference{
+	color: var(--white_100);
 	background-color: rgba(0,0,255,0.35);
 	display: none;
 	height: auto;
@@ -144,11 +147,11 @@
 }
 
 @media screen and (max-device-width: 732px){
-	.slideshow-container{
+	.slideshow{
 		height: 44%
 	}
 
-	.btn{
+	.button{
 		width: 5%;
 	}
 	
