@@ -89,7 +89,7 @@
 	const btnPlay = document.querySelector('#slideshow__playBtn');
 	const refereces = document.querySelectorAll('.slideshow__reference');
 	
-	const Slide_Timeout = 2000;
+	const SLIDE_TIMEOUT = 2000;
 	var intervalSlides;
 	var idx = 1;
 	var up = false;
@@ -174,7 +174,7 @@
 		if (play){
 			btnPlay.classList.replace('slideshow__button--play', 'slideshow__button--pause');
 			showSlide(idx, ++idx);
-			intervalSlides = setTimeout(playSlides, Slide_Timeout);
+			intervalSlides = setTimeout(playSlides, SLIDE_TIMEOUT);
 		}
 		else {
 			btnPlay.classList.replace('slideshow__button--pause','slideshow__button--play');
