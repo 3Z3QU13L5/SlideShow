@@ -1,6 +1,9 @@
 /*------ M O D A L ------*/
 var modal = {
-  currentSlide: null;
+  currentSlide: [{
+    idx: null,
+    slide: null
+  }];
   slides: [
     {
       title: 'A stormy sky and ocean',
@@ -34,3 +37,48 @@ var modal = {
     },
   ]
 }
+
+/*------ C O N T R O L E R ------*/
+ var controler = {
+    init: function () {
+      modal.currentSlide.idx = 0;
+      modal.currentSlide.slide = modal.slides[0];
+    }
+
+    getCurrentSlide: function () {
+      return modal.currentSlide;
+    }
+
+    setCurrentSlide: function (slide) {
+      modal.currentSlide = slide;
+    }
+
+    getSlides: function () {
+      return modal.slides;
+    }
+
+    getNextSlide: function () {
+      var nextIdx = modal.currentSlide.idx++;
+
+      if(nextIdx >= modal.sildes.legth){
+        nextIdx = 0;
+      }
+
+      return modal.slides[nextIdx];
+    }
+
+    getPrevSlide: function () {
+      var prevIdx = modal.currentSlide.idx--;
+
+      if(prevIdx < 0){
+        prevIdx = modal.sildes.legth--;
+      }
+
+      return modal.slides[prevIdx];
+    }
+
+
+ }
+
+ /*------ V I E W ------*/
+ 
