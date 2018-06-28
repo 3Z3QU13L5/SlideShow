@@ -1,39 +1,39 @@
 /*------ M O D A L ------*/
 var modal = {
-  currentSlide: null;
+  currentSlide: null,
   slides: [
     {
-      idx: 0;
+      idx: 0,
       title: 'A stormy sky and ocean',
-      imgSrc: 'https://images.unsplash.com/photo-1523977843538-0650e8cb2e7d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a43d0d3984b7a6e57716c15ee6fe5797&auto=format&fit=crop&w=1050&q=80" alt="Fort Ebey State Park, Coupeville, United States by Patrick Fore.',
+      imgSrc: "img1.jpg",
       description: 'Fort Ebey State Park is a 649-acre camping park on Whidbey Island.',
       reference: 'Fort Ebey State Park, Coupeville, United States by Patrick Fore.'
     },
     {
-      idx: 1;
+      idx: 1,
       title: 'Dachstein Mountains',
-      imgSrc: 'https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b201ea4f1683a8e092ff153c1b423e78&auto=format&fit=crop&w=1189&q=80" alt="Dachstein Mountains, Obertraun, Austria by Kaidi Guo',
+      imgSrc: "img2.jpg",
       description: 'The Dachstein Mountains are a mountain range in the Northern Limestone Alps. The term is used by the Austrian Alpine Club in its classification of the Eastern Alps as one of the 24 sub-ranges of the Northern Limestone Alps.',
       reference: 'Dachstein Mountains, Obertraun, Austria by Kaidi Guo'
     },
     {
-      idx: 2;
+      idx: 2,
       title: '',
-      imgSrc: 'https://images.unsplash.com/photo-1516524609276-3cb95aa22190?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d79a0b6dc9683effb116d7e9763bfa2&auto=format&fit=crop&w=1225&q=80" alt="Tõrva, Estonia by Jaak Horn',
+      imgSrc: "img3.jpg",
       description: '',
       reference: 'Tõrva, Estonia by Jaak Horn'
     },
     {
-      idx: 3;
+      idx: 3,
       title: 'Lutry, Switzerland',
-      imgSrc: 'https://images.unsplash.com/photo-1517483141275-296bb15890b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6fb898eac03ab9abd1137fa691ebe82&auto=format&fit=crop&w=1051&q=80" alt="Lutry, Switzerland by Olivier Fahrni',
+      imgSrc: "img4.jpg",
       description: 'Lutry is a municipality in the Swiss canton of Vaud, located in the Lavaux-Oron.',
       reference: 'Lutry, Switzerland by Olivier Fahrni'
     },
     {
-      idx: 4;
+      idx: 4,
       title: 'Mirror Lake Trail - Tosemite National Park',
-      imgSrc: 'https://images.unsplash.com/photo-1480499484268-a85a2414da81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d765c5039bd6d36022739e3a6552c44&auto=format&fit=crop&w=1055&q=80" alt="Mirror Lake, Yosemite Valley, United States by Quentin Dr',
+      imgSrc: "img5.jpg",
       description: 'From the shuttle stop (#17), a paved trail leads directly to Mirror Lake. Which is in the Adirondack Mountains in northern New York in the United States. The lake is approximately 124 acres, with a watershed area of 741 acres.',
       reference: 'Mirror Lake, Yosemite Valley, United States by Quentin Dr'
     },
@@ -44,42 +44,103 @@ var modal = {
  var controler = {
     init: function () {
       modal.currentSlide = modal.slides[0];
-    }
+      
+      viewSlide.init();
+      viewOptionBar.init();
+    },
 
     getCurrentSlide: function () {
       return modal.currentSlide;
-    }
+    },
 
     setCurrentSlide: function (slide) {
       modal.currentSlide = slide;
-    }
+    },
 
     getSlides: function () {
       return modal.slides;
-    }
+    },
 
     getNextSlide: function () {
-      var nextIdx = modal.currentSlide.idx++;
+      var nextIdx = modal.currentSlide.idx;
+      nextIdx++;
 
-      if(nextIdx >= modal.sildes.legth){
+      if(nextIdx >= modal.slides.length){
         nextIdx = 0;
       }
 
       return modal.slides[nextIdx];
-    }
+    },
 
     getPrevSlide: function () {
-      var prevIdx = modal.currentSlide.idx--;
-
+      var prevIdx = modal.currentSlide.idx;
+      prevIdx--;
       if(prevIdx < 0){
-        prevIdx = modal.sildes.legth--;
+        prevIdx = (modal.slides.length-1);
       }
 
       return modal.slides[prevIdx];
+    },
+
+    getCurrentSlideIndex: function () {
+      return modal.currentSlide.idx;
     }
-
-
- }
+ };
 
  /*------ V I E W ------*/
- 
+ var viewSlide = {
+    init: function () {
+
+      this.slideElem = document.querySelector('.slideshow__slide');
+      this.slideTitleElem = document.querySelector('.slideshow__title');
+      this.slideImgElem = document.querySelector('#slideshow__img');
+      this.slideDescriptionElem = document.querySelector('.slideshow__paragraph');
+      this.slideReferenceElem = document.querySelector('.slideshow__reference');
+
+      this.render();
+    },
+
+    render: function () {
+      var currentSlide = controler.getCurrentSlide;
+      this.slideTitleElem.firstElementChild.textContent = modal.currentSlide.title;
+      this.slideImgElem.src = modal.currentSlide.imgSrc;
+      this.slideDescriptionElem.firstElementChild.textContent = modal.currentSlide.description;
+      this.slideReferenceElem = modal.currentSlide.reference;
+      this.slideImgElem.alt = modal.currentSlide.reference;
+
+    }
+ };
+
+ var viewOptionBar = {
+    init: function () {
+      this.elemButtonInfo = document.querySelector('.slideshow__button--info');
+      this.elemButtonThumbnails = document.querySelector('.slideshow__button--thumbnails');
+      this.elemCounter = document.querySelector('.slideshow__counter');
+      this.elemButtonPrev = document.querySelector('.slideshow__button--prev');
+      this.elemButtonPlay = document.querySelector('#slideshow__playBtn');
+      this.elemButtonNext = document.querySelector('.slideshow__button--next');
+
+      this.elemButtonNext.addEventListener('click', function () {
+        var slide = controler.getNextSlide();
+        controler.setCurrentSlide(slide);
+        viewSlide.render();
+        viewOptionBar.render();
+      });
+
+      this.elemButtonPrev.addEventListener('click', function () {
+        var slide = controler.getPrevSlide();
+        controler.setCurrentSlide(slide);
+        viewSlide.render();
+        viewOptionBar.render();
+      });
+
+      this.render();
+    },
+
+    render: function () {
+      var counter = modal.currentSlide.idx + 1;
+      this.elemCounter.textContent = counter + "/" + modal.slides.length;
+    }
+ }
+
+ controler.init();
