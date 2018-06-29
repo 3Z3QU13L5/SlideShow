@@ -174,13 +174,19 @@ var modal = {
       });
 
       this.elemButtonInfo.addEventListener('click', function () {
+        if (viewThumbnail.elemThumbnails.style.display === 'block'){
+          viewThumbnail.elemThumbnails.style.display = 'none';
+        }
         viewSlide.slideDescriptionElem.style.display = 
-              viewSlide.slideDescriptionElem.style.display === 'none'? 'block' : 'none';
+          viewSlide.slideDescriptionElem.style.display === 'none'? 'block' : 'none';
       })
 
       this.elemButtonThumbnails.addEventListener('click', function () {
+        if (viewSlide.slideDescriptionElem.style.display === 'block'){
+          viewSlide.slideDescriptionElem.style.display = 'none';
+        }
         viewThumbnail.elemThumbnails.style.display = 
-              viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
+          viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
       })
 
       this.render();
