@@ -46,6 +46,7 @@ var modal = {
       modal.currentSlide = modal.slides[0];
       
       viewSlide.init();
+      viewThumbnail.init();
       viewOptionBar.init();
     },
 
@@ -97,6 +98,11 @@ var modal = {
       this.slideDescriptionElem = document.querySelector('.slideshow__paragraph');
       this.slideReferenceElem = document.querySelector('.slideshow__reference');
 
+      this.slideTitleElem.addEventListener('click', function () {
+        viewSlide.slideReferenceElem.style.display = 
+              viewSlide.slideReferenceElem.style.display === 'none'? 'block' : 'none';
+      })
+
       this.render();
     },
 
@@ -105,10 +111,43 @@ var modal = {
       this.slideTitleElem.firstElementChild.textContent = modal.currentSlide.title;
       this.slideImgElem.src = modal.currentSlide.imgSrc;
       this.slideDescriptionElem.firstElementChild.textContent = modal.currentSlide.description;
-      this.slideReferenceElem = modal.currentSlide.reference;
+      this.slideReferenceElem.textContent = modal.currentSlide.reference;
       this.slideImgElem.alt = modal.currentSlide.reference;
 
     }
+ };
+
+ var viewThumbnail = {
+  init: function () {
+    this.elemThumbnails = document.querySelector('.slideshow__thumbnails');
+
+    this.render();
+  },
+
+  render: function () {
+    var slides = controler.getSlides();
+
+    for(var i = 0; i < slides.length; i++){
+      slide = slides[i];
+
+      elemDiv = document.createElement('div');
+      elemDiv.classList.add('slideshow__thumbnail-imgs');
+
+      elemImg = document.createElement('img');
+      elemImg.src = slide.imgSrc;
+      elemDiv.appendChild(elemImg);
+
+      elemDiv.addEventListener('click', (function (fakeSlide) {
+        return function () {
+          controler.setCurrentSlide(fakeSlide);
+          viewSlide.render();
+        }
+      })(slide));
+
+      this.elemThumbnails.appendChild(elemDiv);
+    }
+  }
+
  };
 
  var viewOptionBar = {
@@ -133,6 +172,16 @@ var modal = {
         viewSlide.render();
         viewOptionBar.render();
       });
+
+      this.elemButtonInfo.addEventListener('click', function () {
+        viewSlide.slideDescriptionElem.style.display = 
+              viewSlide.slideDescriptionElem.style.display === 'none'? 'block' : 'none';
+      })
+
+      this.elemButtonThumbnails.addEventListener('click', function () {
+        viewThumbnail.elemThumbnails.style.display = 
+              viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
+      })
 
       this.render();
     },

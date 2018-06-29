@@ -112,7 +112,6 @@
 }
 .slideshow__paragraph{
 	background-color: rgba(255,255,255,0.42);
-	display: none;
 	height: 20%;
 	left: 1%;
 	padding: 10px;
@@ -139,7 +138,6 @@
 .slideshow__reference{
 	color: var(--white_100);
 	background-color: rgba(0,0,255,0.35);
-	display: none;
 	height: auto;
 	left: 35%;
 	top: 8%;
