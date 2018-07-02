@@ -1,6 +1,8 @@
 /*------ M O D A L ------*/
 var modal = {
   currentSlide: null,
+  autoPlay: false,
+  SLIDE_TIMEOUT: 2000,
   slides: [
     {
       idx: 0,
@@ -85,6 +87,18 @@ var modal = {
 
     getCurrentSlideIndex: function () {
       return modal.currentSlide.idx;
+    },
+    
+    getAutoPlay: function () {
+      return modal.autoPlay;
+    },
+
+    setAutoPlay: function (bool) {
+      modal.autoPlay = bool;
+    },
+
+    getSLIDE_TIMEOUT: function () {
+      return  modal.SLIDE_TIMEOUT;
     }
  };
 
@@ -113,7 +127,13 @@ var modal = {
       this.slideDescriptionElem.firstElementChild.textContent = modal.currentSlide.description;
       this.slideReferenceElem.textContent = modal.currentSlide.reference;
       this.slideImgElem.alt = modal.currentSlide.reference;
+    },
 
+    autoRender: function () {
+      var slide = controler.getNextSlide();
+      controler.setCurrentSlide(slide);
+      viewSlide.render();
+      viewOptionBar.render();
     }
  };
 
@@ -158,6 +178,7 @@ var modal = {
       this.elemButtonPrev = document.querySelector('.slideshow__button--prev');
       this.elemButtonPlay = document.querySelector('#slideshow__playBtn');
       this.elemButtonNext = document.querySelector('.slideshow__button--next');
+      var intervalSlides;
 
       this.elemButtonNext.addEventListener('click', function () {
         var slide = controler.getNextSlide();
@@ -179,7 +200,7 @@ var modal = {
         }
         viewSlide.slideDescriptionElem.style.display = 
           viewSlide.slideDescriptionElem.style.display === 'none'? 'block' : 'none';
-      })
+      });
 
       this.elemButtonThumbnails.addEventListener('click', function () {
         if (viewSlide.slideDescriptionElem.style.display === 'block'){
@@ -187,7 +208,20 @@ var modal = {
         }
         viewThumbnail.elemThumbnails.style.display = 
           viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
-      })
+      });
+
+      this.elemButtonPlay.addEventListener('click', function () {
+        viewOptionBar.elemButtonPlay.classList.toggle('slideshow__button--play');
+        viewOptionBar.elemButtonPlay.classList.toggle('slideshow__button--pause');
+        controler.setAutoPlay(!controler.getAutoPlay());
+        if(controler.getAutoPlay()){
+          viewSlide.autoRender();
+          intervalSlides = setInterval(viewSlide.autoRender, controler.getSLIDE_TIMEOUT());  
+        } else {
+          clearInterval(intervalSlides);
+        }
+        
+      });
 
       this.render();
     },
