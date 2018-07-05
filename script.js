@@ -1,4 +1,4 @@
-/*------ M O D A L ------*/
+/*------ M O D E L ------*/
 var modal = {
   currentSlide: null,
   autoPlay: false,
@@ -44,12 +44,14 @@ var modal = {
 
 /*------ C O N T R O L E R ------*/
  var controler = {
-    init: function () {
-      modal.currentSlide = modal.slides[0];
-      
-      viewSlide.init();
-      viewThumbnail.init();
-      viewOptionBar.init();
+    init: function () {   
+      if(modal.slides != null){
+        modal.currentSlide = modal.slides[0];
+        
+        viewSlide.init();
+        viewThumbnail.init();
+        viewOptionBar.init();  
+      }
     },
 
     getCurrentSlide: function () {
@@ -97,7 +99,7 @@ var modal = {
       modal.autoPlay = bool;
     },
 
-    getSLIDE_TIMEOUT: function () {
+    getSlideTime: function () {
       return  modal.SLIDE_TIMEOUT;
     }
  };
@@ -107,14 +109,14 @@ var modal = {
     init: function () {
 
       this.slideElem = document.querySelector('.slideshow__slide');
-      this.slideTitleElem = document.querySelector('.slideshow__title');
-      this.slideImgElem = document.querySelector('#slideshow__img');
-      this.slideDescriptionElem = document.querySelector('.slideshow__paragraph');
-      this.slideReferenceElem = document.querySelector('.slideshow__reference');
+      this.slideTitle = document.querySelector('.slideshow__title');
+      this.slideImg = document.querySelector('#slideshow__img');
+      this.slideDescription = document.querySelector('.slideshow__paragraph');
+      this.slideReference = document.querySelector('.slideshow__reference');
 
-      this.slideTitleElem.addEventListener('click', function () {
-        viewSlide.slideReferenceElem.style.display = 
-              viewSlide.slideReferenceElem.style.display === 'none'? 'block' : 'none';
+      this.slideTitle.addEventListener('click', function () {
+        viewSlide.slideReference.style.display = 
+              viewSlide.slideReference.style.display === 'none'? 'block' : 'none';
       })
 
       this.render();
@@ -122,11 +124,11 @@ var modal = {
 
     render: function () {
       var currentSlide = controler.getCurrentSlide;
-      this.slideTitleElem.firstElementChild.textContent = modal.currentSlide.title;
-      this.slideImgElem.src = modal.currentSlide.imgSrc;
-      this.slideDescriptionElem.firstElementChild.textContent = modal.currentSlide.description;
-      this.slideReferenceElem.textContent = modal.currentSlide.reference;
-      this.slideImgElem.alt = modal.currentSlide.reference;
+      this.slideTitle.firstElementChild.textContent = modal.currentSlide.title;
+      this.slideImg.src = modal.currentSlide.imgSrc;
+      this.slideDescription.firstElementChild.textContent = modal.currentSlide.description;
+      this.slideReference.textContent = modal.currentSlide.reference;
+      this.slideImg.alt = modal.currentSlide.reference;
     },
 
     autoRender: function () {
@@ -172,51 +174,51 @@ var modal = {
 
  var viewOptionBar = {
     init: function () {
-      this.elemButtonInfo = document.querySelector('.slideshow__button--info');
-      this.elemButtonThumbnails = document.querySelector('.slideshow__button--thumbnails');
-      this.elemCounter = document.querySelector('.slideshow__counter');
-      this.elemButtonPrev = document.querySelector('.slideshow__button--prev');
-      this.elemButtonPlay = document.querySelector('#slideshow__playBtn');
-      this.elemButtonNext = document.querySelector('.slideshow__button--next');
+      this.ButtonInfo = document.querySelector('.slideshow__button--info');
+      this.ButtonThumbnails = document.querySelector('.slideshow__button--thumbnails');
+      this.Counter = document.querySelector('.slideshow__counter');
+      this.ButtonPrev = document.querySelector('.slideshow__button--prev');
+      this.ButtonPlay = document.querySelector('#slideshow__playBtn');
+      this.ButtonNext = document.querySelector('.slideshow__button--next');
       var intervalSlides;
 
-      this.elemButtonNext.addEventListener('click', function () {
+      this.ButtonNext.addEventListener('click', function () {
         var slide = controler.getNextSlide();
         controler.setCurrentSlide(slide);
         viewSlide.render();
         viewOptionBar.render();
       });
 
-      this.elemButtonPrev.addEventListener('click', function () {
+      this.ButtonPrev.addEventListener('click', function () {
         var slide = controler.getPrevSlide();
         controler.setCurrentSlide(slide);
         viewSlide.render();
         viewOptionBar.render();
       });
 
-      this.elemButtonInfo.addEventListener('click', function () {
+      this.ButtonInfo.addEventListener('click', function () {
         if (viewThumbnail.elemThumbnails.style.display === 'block'){
           viewThumbnail.elemThumbnails.style.display = 'none';
         }
-        viewSlide.slideDescriptionElem.style.display = 
-          viewSlide.slideDescriptionElem.style.display === 'none'? 'block' : 'none';
+        viewSlide.slideDescription.style.display = 
+          viewSlide.slideDescription.style.display === 'none'? 'block' : 'none';
       });
 
-      this.elemButtonThumbnails.addEventListener('click', function () {
-        if (viewSlide.slideDescriptionElem.style.display === 'block'){
-          viewSlide.slideDescriptionElem.style.display = 'none';
+      this.ButtonThumbnails.addEventListener('click', function () {
+        if (viewSlide.slideDescription.style.display === 'block'){
+          viewSlide.slideDescription.style.display = 'none';
         }
         viewThumbnail.elemThumbnails.style.display = 
           viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
       });
 
-      this.elemButtonPlay.addEventListener('click', function () {
-        viewOptionBar.elemButtonPlay.classList.toggle('slideshow__button--play');
-        viewOptionBar.elemButtonPlay.classList.toggle('slideshow__button--pause');
+      this.ButtonPlay.addEventListener('click', function () {
+        viewOptionBar.ButtonPlay.classList.toggle('slideshow__button--play');
+        viewOptionBar.ButtonPlay.classList.toggle('slideshow__button--pause');
         controler.setAutoPlay(!controler.getAutoPlay());
         if(controler.getAutoPlay()){
           viewSlide.autoRender();
-          intervalSlides = setInterval(viewSlide.autoRender, controler.getSLIDE_TIMEOUT());  
+          intervalSlides = setInterval(viewSlide.autoRender, controler.getSlideTime());  
         } else {
           clearInterval(intervalSlides);
         }
@@ -228,7 +230,7 @@ var modal = {
 
     render: function () {
       var counter = modal.currentSlide.idx + 1;
-      this.elemCounter.textContent = counter + "/" + modal.slides.length;
+      this.Counter.textContent = counter + "/" + modal.slides.length;
     }
  }
 
