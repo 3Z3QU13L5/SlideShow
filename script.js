@@ -152,22 +152,30 @@ var modal = {
     for(var i = 0; i < slides.length; i++){
       slide = slides[i];
 
-      elemDiv = document.createElement('div');
-      elemDiv.classList.add('slideshow__thumbnail-imgs');
+      this.setThumbnail();
 
-      elemImg = document.createElement('img');
-      elemImg.src = slide.imgSrc;
-      elemDiv.appendChild(elemImg);
-
-      elemDiv.addEventListener('click', (function (fakeSlide) {
-        return function () {
-          controler.setCurrentSlide(fakeSlide);
-          viewSlide.render();
-        }
-      })(slide));
+      this.addThumbnailListeners();      
 
       this.elemThumbnails.appendChild(elemDiv);
     }
+  },
+
+  setThumbnail: function () {
+    elemDiv = document.createElement('div');
+    elemDiv.classList.add('slideshow__thumbnail-imgs');
+
+    elemImg = document.createElement('img');
+    elemImg.src = slide.imgSrc;
+    elemDiv.appendChild(elemImg);
+  },
+
+  addThumbnailListeners: function () {
+    elemDiv.addEventListener('click', (function (fakeSlide) {
+      return function () {
+        controler.setCurrentSlide(fakeSlide);
+        viewSlide.render();
+      }
+    })(slide));
   }
 
  };
@@ -188,7 +196,7 @@ var modal = {
 
     render: function () {
       var counter = modal.currentSlide.idx + 1;
-      this.Counter.textContent = counter + "/" + modal.slides.length;
+      this.Counter.innerHTML = counter + "/" + modal.slides.length;
     },
 
     setListeners: function () {
@@ -200,7 +208,7 @@ var modal = {
         viewThumbnail.elemThumbnails.style.display = 
           viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
       });
-      
+
       this.ButtonNext.addEventListener('click', function () {
         var slide = controler.getNextSlide();
         controler.setCurrentSlide(slide);
