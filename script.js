@@ -47,7 +47,7 @@ var modal = {
     init: function () {   
       if(modal.slides != null){
         modal.currentSlide = modal.slides[0];
-        
+
         viewSlide.init();
         viewThumbnail.init();
         viewOptionBar.init();  
@@ -180,8 +180,27 @@ var modal = {
       this.ButtonPrev = document.querySelector('.slideshow__button--prev');
       this.ButtonPlay = document.querySelector('#slideshow__playBtn');
       this.ButtonNext = document.querySelector('.slideshow__button--next');
-      var intervalSlides;
+      var intervalSlides;         
+      
+      this.setListeners();
+      this.render();
+    },
 
+    render: function () {
+      var counter = modal.currentSlide.idx + 1;
+      this.Counter.textContent = counter + "/" + modal.slides.length;
+    },
+
+    setListeners: function () {
+
+      this.ButtonThumbnails.addEventListener('click', function () {
+        if (viewSlide.slideDescription.style.display === 'block'){
+          viewSlide.slideDescription.style.display = 'none';
+        }
+        viewThumbnail.elemThumbnails.style.display = 
+          viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
+      });
+      
       this.ButtonNext.addEventListener('click', function () {
         var slide = controler.getNextSlide();
         controler.setCurrentSlide(slide);
@@ -204,14 +223,6 @@ var modal = {
           viewSlide.slideDescription.style.display === 'none'? 'block' : 'none';
       });
 
-      this.ButtonThumbnails.addEventListener('click', function () {
-        if (viewSlide.slideDescription.style.display === 'block'){
-          viewSlide.slideDescription.style.display = 'none';
-        }
-        viewThumbnail.elemThumbnails.style.display = 
-          viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
-      });
-
       this.ButtonPlay.addEventListener('click', function () {
         viewOptionBar.ButtonPlay.classList.toggle('slideshow__button--play');
         viewOptionBar.ButtonPlay.classList.toggle('slideshow__button--pause');
@@ -224,13 +235,6 @@ var modal = {
         }
         
       });
-
-      this.render();
-    },
-
-    render: function () {
-      var counter = modal.currentSlide.idx + 1;
-      this.Counter.textContent = counter + "/" + modal.slides.length;
     }
  }
 
