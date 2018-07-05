@@ -3,7 +3,6 @@ var modal = {
   currentSlide: null,
   autoPlay: false,
   SLIDE_TIMEOUT: 2000,
-  indx: null,
   slides: [
     {
       title: 'A stormy sky and ocean',
@@ -59,37 +58,37 @@ var modal = {
       modal.currentSlide = slide;
     },
 
+    getIndx: function () {
+      var indx = modal.slides.indexOf(modal.currentSlide);
+      return indx;
+    },
+
     getSlides: function () {
       return modal.slides;
     },
 
     getNextSlide: function () {
-      var nextIdx = modal.indx;
+      var nextIdx = this.getIndx();
       nextIdx++;
 
       if(nextIdx >= modal.slides.length){
         nextIdx = 0;
       }
-      modal.indx = nextIdx;
+  
       return modal.slides[nextIdx];
     },
 
     getPrevSlide: function () {
-      var prevIdx = modal.indx;
+      var prevIdx = this.getIndx();
       prevIdx--;
       
       if(prevIdx < 0){
         prevIdx = (modal.slides.length-1);
       }
 
-      modal.indx = prevIdx;
       return modal.slides[prevIdx];
     },
 
-    getCurrentSlideIndex: function () {
-      return modal.currentSlide.idx;
-    },
-    
     getAutoPlay: function () {
       return modal.autoPlay;
     },
@@ -173,6 +172,7 @@ var modal = {
       return function () {
         controler.setCurrentSlide(fakeSlide);
         viewSlide.render();
+        viewOptionBar.render();
       }
     })(slide));
   }
@@ -194,7 +194,7 @@ var modal = {
     },
 
     render: function () {
-      var counter = modal.indx + 1;
+      var counter = controler.getIndx() + 1;
       this.Counter.innerHTML = counter + "/" + modal.slides.length;
     },
 
