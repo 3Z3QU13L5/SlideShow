@@ -113,8 +113,7 @@ var modal = {
       this.slideReference = document.querySelector('.slideshow__reference');
 
       this.slideTitle.addEventListener('click', function () {
-        viewSlide.slideReference.style.display = 
-              viewSlide.slideReference.style.display === 'none'? 'block' : 'none';
+        viewSlide.slideReference.classList.toggle('slideshow__element--hidden');
       })
 
       this.render();
@@ -201,11 +200,10 @@ var modal = {
     setListeners: function () {
 
       this.ButtonThumbnails.addEventListener('click', function () {
-        if (viewSlide.slideDescription.style.display === 'block'){
-          viewSlide.slideDescription.style.display = 'none';
+        if (!viewSlide.slideDescription.classList.contains('slideshow__element--hidden')){
+          viewSlide.slideDescription.classList.toggle('slideshow__element--hidden');
         }
-        viewThumbnail.elemThumbnails.style.display = 
-          viewThumbnail.elemThumbnails.style.display === 'none'? 'block' : 'none';
+        viewThumbnail.elemThumbnails.classList.toggle('slideshow__element--hidden');
       });
 
       this.ButtonNext.addEventListener('click', function () {
@@ -223,11 +221,10 @@ var modal = {
       });
 
       this.ButtonInfo.addEventListener('click', function () {
-        if (viewThumbnail.elemThumbnails.style.display === 'block'){
-          viewThumbnail.elemThumbnails.style.display = 'none';
+        if (!viewThumbnail.elemThumbnails.classList.contains('slideshow__element--hidden')){
+          viewThumbnail.elemThumbnails.classList.toggle('slideshow__element--hidden');
         }
-        viewSlide.slideDescription.style.display = 
-          viewSlide.slideDescription.style.display === 'none'? 'block' : 'none';
+        viewSlide.slideDescription.classList.toggle('slideshow__element--hidden');
       });
 
       this.ButtonPlay.addEventListener('click', function () {

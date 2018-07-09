@@ -100,7 +100,6 @@
 	background-color: var(--black_T_50);
 	bottom: 6%;
 	display: table;
-	display: none;
 	height: 20%;
 	width: 100%;
 }
@@ -141,6 +140,10 @@
 	height: auto;
 	left: 35%;
 	top: 8%;
+}
+
+.slideshow__element--hidden{
+	display: none;
 }
 
 @media screen and (max-device-width: 732px){
